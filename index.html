@@ -4,26 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vong Ngư Tiểu Điếm</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐟%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=WindSong:wght@500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=WindSong:wght@500&family=Cormorant+Garamond:wght@600&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#071a22;--panel:rgba(20,70,82,.45);--tx:#e3f3f5;--mu:#9dbcc6;--ac:#5ccbd8;--coral:#ff8a6b;--bd:rgba(120,200,210,.22);--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif;--title:'WindSong','Noto Serif',cursive;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E")}
+:root{--bg:#0b1533;--panel:rgba(50,80,150,.3);--tx:#e8eefc;--mu:#a3b3d6;--ac:#7fd0f2;--coral:#ff9d82;--bd:rgba(140,170,255,.22);--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif;--title:'WindSong','Noto Serif',cursive;--tabf:'Cormorant Garamond','Noto Serif',serif;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E")}
 *{box-sizing:border-box}
-body{margin:0;color:var(--tx);font:16px/1.6 var(--ui);background:radial-gradient(900px 520px at 85% 0,rgba(70,210,220,.12),transparent 65%),radial-gradient(700px 520px at 0 45%,rgba(40,160,180,.10),transparent 65%),#071a22}
+body{margin:0;color:var(--tx);font:16px/1.6 var(--ui);background:radial-gradient(900px 520px at 85% 0,rgba(90,140,255,.16),transparent 65%),radial-gradient(700px 520px at 0 45%,rgba(80,190,230,.09),transparent 65%),#0b1533}
 body.sans{--ff:var(--ui)}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:1px solid var(--bd);border-radius:6px;padding:6px 12px}
 button:hover{border-color:var(--ac)}
 :focus-visible{outline:2px solid var(--coral);outline-offset:2px}
-.hero{position:relative;text-align:center;color:#fff;padding:0 16px 80px;background:linear-gradient(rgba(5,14,22,.2),rgba(5,14,22,.5)),url(nen.jpg) center/cover no-repeat}
-.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 28px;padding:16px 8px 10px;border-bottom:1px solid rgba(255,255,255,.22)}
-.tabs button{border:0;border-radius:0;border-bottom:1px solid transparent;color:#d8f3f7;padding:4px 2px;font-size:15px;letter-spacing:.06em;text-shadow:0 1px 6px #000}
-.tabs button:hover{color:#fff;border-bottom-color:#ffb199}
-.brand{padding-top:34px}
-.seal{display:inline-block;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;margin-bottom:10px;background:rgba(5,14,22,.35)}
+.hero{position:relative;text-align:center;color:#fff;min-height:400px;padding:0 16px 80px;background:linear-gradient(rgba(5,10,30,.2),rgba(5,10,30,.5)),url(nen.jpg) center/cover no-repeat}
+.seal{position:absolute;left:16px;top:16px;z-index:2;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;background:rgba(5,10,30,.35)}
+.brand{padding-top:30px}
 .hero h1{font:500 clamp(60px,16vw,110px)/1.3 var(--title);margin:0;cursor:pointer;text-shadow:0 2px 14px rgba(0,0,0,.7)}
 .hero p{margin:0;opacity:.9;text-shadow:0 1px 8px #000}
-.hero svg{position:absolute;left:0;bottom:-1px;width:100%;height:46px;display:block}
+.tabs{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;flex-wrap:wrap;gap:2px 30px;padding:44px 8px 14px;background:linear-gradient(transparent,#0b1533 85%)}
+.tabs button{border:0;border-radius:0;border-bottom:1px solid transparent;color:#e3ecff;padding:2px 2px;font:600 20px/1.4 var(--tabf);letter-spacing:.08em;text-shadow:0 1px 6px #000}
+.tabs button:hover{color:#fff;border-bottom-color:#ffb199}
 .wrap{max-width:980px;margin:0 auto;padding:0 16px}
 section{padding:22px 0 6px}
 h2{font:600 24px/1.3 var(--ff);margin:0 0 14px;display:flex;align-items:baseline;gap:10px}
@@ -36,31 +35,30 @@ h2 small{font:400 14px var(--ui);color:var(--mu)}
 .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bk h3{font:600 17px/1.35 var(--ff);margin:10px 0 2px}
 .bk p{margin:0 0 8px;color:var(--mu);font-size:14px}
-.go{background:var(--ac);color:#06222a;border-color:var(--ac);padding:6px 16px;font-size:14px}
+.go{background:var(--ac);color:#08122b;border-color:var(--ac);padding:6px 16px;font-size:14px}
 .row{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--bd);border-radius:0;padding:14px 2px}
 .row:hover{background:var(--panel)}
 .row span{font:400 18px/1.4 var(--ff)}
 .mu{color:var(--mu);font-size:14px}
 .head{display:flex;gap:16px;align-items:flex-start;margin:16px 0}
 .head .cv{font-size:15px}
-.read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0;background:#071a22;box-shadow:0 0 0 14px #071a22;border-radius:4px}
+.read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0;background:#0b1533;box-shadow:0 0 0 14px #0b1533;border-radius:4px}
 .read p{margin:0 0 1.1em}
 .nv{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
 .nv button:disabled{opacity:.35;cursor:default}
 .msg{padding:40px 0;color:var(--mu);text-align:center}
 footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);font-size:14px;border-top:1px solid var(--bd)}
-body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:#bfeaf2;opacity:.5}
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:#cfe0ff;opacity:.5}
 body::before{mask:var(--m) 5% 12%/10px 10px no-repeat,var(--m) 20% 40%/14px 14px no-repeat,var(--m) 35% 80%/9px 9px no-repeat,var(--m) 48% 25%/16px 16px no-repeat,var(--m) 62% 65%/11px 11px no-repeat,var(--m) 75% 15%/13px 13px no-repeat,var(--m) 88% 50%/9px 9px no-repeat,var(--m) 95% 85%/15px 15px no-repeat}
 body::after{mask:var(--m) 12% 70%/12px 12px no-repeat,var(--m) 28% 8%/9px 9px no-repeat,var(--m) 42% 52%/15px 15px no-repeat,var(--m) 55% 92%/10px 10px no-repeat,var(--m) 68% 35%/13px 13px no-repeat,var(--m) 82% 72%/9px 9px no-repeat,var(--m) 92% 10%/14px 14px no-repeat,var(--m) 3% 90%/11px 11px no-repeat}
-@media(prefers-reduced-motion:no-preference){body::before{animation:tw 3.5s ease-in-out infinite}body::after{animation:tw 5s ease-in-out 1.5s infinite}.hero svg path{animation:w 9s ease-in-out infinite alternate}}
+@media(prefers-reduced-motion:no-preference){body::before{animation:tw 3.5s ease-in-out infinite}body::after{animation:tw 5s ease-in-out 1.5s infinite}}
 @keyframes tw{0%,100%{opacity:.2}50%{opacity:.85}}
-@keyframes w{to{transform:translateX(-30px)}}
 </style>
 </head>
 <body>
-<div class="hero"><div class="tabs"><button data-sec="gioi-thieu">Mộng Ảnh</button><button data-sec="dam-my">Song Ảnh</button><button data-sec="ngon-tinh">Nguyệt Ảnh</button><button data-sec="goc-tham-kin">Mật Ảnh</button></div>
-<div class="brand"><div class="seal" aria-hidden="true">忘魚小店</div><h1 id="logo">Vong Ngư Tiểu Điếm</h1></div>
-<svg viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true"><path d="M-60 24 Q0 4 60 24 T180 24 T300 24 T420 24 T540 24 T660 24 T780 24 T900 24 T1020 24 T1140 24 T1260 24 V46 H-60Z" fill="#071a22"/></svg></div>
+<div class="hero"><div class="seal" aria-hidden="true">忘魚小店</div>
+<div class="brand"><h1 id="logo">Vong Ngư Tiểu Điếm</h1><p>Tiệm nhỏ của chú cá quên</p></div>
+<div class="tabs"><button data-sec="dang-ra">Mộng Ảnh</button><button data-sec="hoan">Song Ảnh</button><button data-sec="gioi-thieu">Nguyệt Ảnh</button><button data-sec="gioi-thieu">Mật Ảnh</button></div></div>
 <div class="wrap" id="app"><div class="msg">Đang tải…</div></div>
 <footer id="gioi-thieu">Vong Ngư Tiểu Điếm · nơi đăng truyện của riêng mình<br>Sửa nội dung phần này trong file index.html.</footer>
 <script>
