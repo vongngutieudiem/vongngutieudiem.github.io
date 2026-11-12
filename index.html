@@ -8,26 +8,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=WindSong:wght@500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#e9f4f6;--panel:#d5eaee;--tx:#0b2a38;--mu:#4f7482;--ac:#0e7c8f;--coral:#d9573a;--bd:#bcd9df;--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07151f;--panel:#0d2533;--tx:#d3ecf0;--mu:#7fa3b0;--ac:#4fc3d6;--coral:#ff8a6b;--bd:#18364a}}
-:root[data-theme="dark"]{--bg:#07151f;--panel:#0d2533;--tx:#d3ecf0;--mu:#7fa3b0;--ac:#4fc3d6;--coral:#ff8a6b;--bd:#18364a}
+:root{--bg:#071a22;--panel:rgba(20,70,82,.45);--tx:#e3f3f5;--mu:#9dbcc6;--ac:#5ccbd8;--coral:#ff8a6b;--bd:rgba(120,200,210,.22);--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif;--title:'WindSong','Noto Serif',cursive;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E")}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 var(--ui)}
+body{margin:0;color:var(--tx);font:16px/1.6 var(--ui);background:radial-gradient(900px 520px at 85% 0,rgba(70,210,220,.12),transparent 65%),radial-gradient(700px 520px at 0 45%,rgba(40,160,180,.10),transparent 65%),#071a22}
 body.sans{--ff:var(--ui)}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:1px solid var(--bd);border-radius:6px;padding:6px 12px}
 button:hover{border-color:var(--ac)}
 :focus-visible{outline:2px solid var(--coral);outline-offset:2px}
-nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:2px;flex-wrap:wrap;padding:6px 12px;background:var(--bg);border-bottom:1px solid var(--bd)}
-nav b{font:600 16px var(--ff);margin-right:auto;cursor:pointer;padding:4px 6px}
-nav button{border:0;color:var(--mu);padding:5px 9px;border-radius:4px}
-nav button:hover{color:var(--tx)}
-.hero{position:relative;text-align:center;color:#e8f8fa;padding:54px 16px 74px;background:radial-gradient(circle at 75% 15%,rgba(255,255,255,.22),transparent 45%),radial-gradient(circle at 15% 60%,rgba(120,230,255,.18),transparent 40%),linear-gradient(#08323f,#0d6a80 85%)}
-.seal{display:inline-block;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;margin-bottom:12px}
-.hero h1{font:500 clamp(54px,14vw,96px)/1.3 'WindSong','Noto Serif',cursive;margin:0;cursor:pointer}
-.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 24px;margin-top:22px}
-.tabs button{border:0;border-bottom:1px solid transparent;border-radius:0;color:#cdeff4;padding:4px 2px;font-size:15px;letter-spacing:.06em}
+.hero{position:relative;text-align:center;color:#fff;padding:0 16px 80px;background:linear-gradient(rgba(5,14,22,.2),rgba(5,14,22,.5)),url(nen.jpg) center/cover no-repeat}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 28px;padding:16px 8px 10px;border-bottom:1px solid rgba(255,255,255,.22)}
+.tabs button{border:0;border-radius:0;border-bottom:1px solid transparent;color:#d8f3f7;padding:4px 2px;font-size:15px;letter-spacing:.06em;text-shadow:0 1px 6px #000}
 .tabs button:hover{color:#fff;border-bottom-color:#ffb199}
-.hero p{margin:8px 0 0;opacity:.8}
+.brand{padding-top:34px}
+.seal{display:inline-block;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;margin-bottom:10px;background:rgba(5,14,22,.35)}
+.hero h1{font:500 clamp(60px,16vw,110px)/1.3 var(--title);margin:0;cursor:pointer;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.hero p{margin:0;opacity:.9;text-shadow:0 1px 8px #000}
 .hero svg{position:absolute;left:0;bottom:-1px;width:100%;height:46px;display:block}
 .wrap{max-width:980px;margin:0 auto;padding:0 16px}
 section{padding:22px 0 6px}
@@ -37,55 +32,35 @@ h2 small{font:400 14px var(--ui);color:var(--mu)}
 @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:860px){.grid{grid-template-columns:repeat(4,1fr)}}
 .bk{text-align:center;cursor:pointer}
-.cv{aspect-ratio:3/4;border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;padding:12px;color:#eafcff;font:600 20px/1.3 var(--ff)}
+.cv{aspect-ratio:3/4;border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;padding:12px;color:#eafcff;font:600 20px/1.3 var(--ff);box-shadow:0 4px 18px rgba(0,0,0,.35)}
 .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bk h3{font:600 17px/1.35 var(--ff);margin:10px 0 2px}
 .bk p{margin:0 0 8px;color:var(--mu);font-size:14px}
-.go{background:var(--ac);color:var(--bg);border-color:var(--ac);padding:6px 16px;font-size:14px}
+.go{background:var(--ac);color:#06222a;border-color:var(--ac);padding:6px 16px;font-size:14px}
 .row{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--bd);border-radius:0;padding:14px 2px}
 .row:hover{background:var(--panel)}
 .row span{font:400 18px/1.4 var(--ff)}
 .mu{color:var(--mu);font-size:14px}
 .head{display:flex;gap:16px;align-items:flex-start;margin:16px 0}
-.head .cv{width:130px;flex:none;font-size:15px}
-.read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0}
+.head .cv{font-size:15px}
+.read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0;background:#071a22;box-shadow:0 0 0 14px #071a22;border-radius:4px}
 .read p{margin:0 0 1.1em}
 .nv{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
 .nv button:disabled{opacity:.35;cursor:default}
 .msg{padding:40px 0;color:var(--mu);text-align:center}
 footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);font-size:14px;border-top:1px solid var(--bd)}
-#vien{padding-bottom:30px}
-@media(prefers-reduced-motion:no-preference){.hero svg path{animation:w 9s ease-in-out infinite alternate}}
-@keyframes w{to{transform:translateX(-30px)}}
-:root{--star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z' fill='%23fff'/%3E%3C/svg%3E")}
-.hero>*{position:relative}
-.hero::before,.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-repeat:no-repeat}
-.hero::before{background-image:var(--star),var(--star),var(--star),var(--star),var(--star);background-position:8% 22%,24% 70%,52% 12%,78% 60%,92% 25%;background-size:16px,10px,12px,18px,9px}
-.hero::after{background-image:var(--star),var(--star),var(--star),var(--star);background-position:15% 45%,38% 30%,66% 38%,86% 78%;background-size:9px,15px,11px,13px}
-@media(prefers-reduced-motion:no-preference){.hero::before{animation:tw 3s ease-in-out infinite}.hero::after{animation:tw 4s ease-in-out 1.2s infinite}}
-@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
-:root{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E");--sp:#e0a21b}
-@media(prefers-color-scheme:dark){:root{--sp:#bfeaf2}}
-body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--sp);opacity:.6}
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:#bfeaf2;opacity:.5}
 body::before{mask:var(--m) 5% 12%/10px 10px no-repeat,var(--m) 20% 40%/14px 14px no-repeat,var(--m) 35% 80%/9px 9px no-repeat,var(--m) 48% 25%/16px 16px no-repeat,var(--m) 62% 65%/11px 11px no-repeat,var(--m) 75% 15%/13px 13px no-repeat,var(--m) 88% 50%/9px 9px no-repeat,var(--m) 95% 85%/15px 15px no-repeat}
 body::after{mask:var(--m) 12% 70%/12px 12px no-repeat,var(--m) 28% 8%/9px 9px no-repeat,var(--m) 42% 52%/15px 15px no-repeat,var(--m) 55% 92%/10px 10px no-repeat,var(--m) 68% 35%/13px 13px no-repeat,var(--m) 82% 72%/9px 9px no-repeat,var(--m) 92% 10%/14px 14px no-repeat,var(--m) 3% 90%/11px 11px no-repeat}
-@media(prefers-reduced-motion:no-preference){body::before{animation:tw2 3.5s ease-in-out infinite}body::after{animation:tw2 5s ease-in-out 1.5s infinite}}
-@keyframes tw2{0%,100%{opacity:.2}50%{opacity:.85}}
-.read{background:var(--bg);box-shadow:0 0 0 12px var(--bg)}
-html{background:#07151f}
-body{background:transparent}
-html::before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(rgba(5,12,20,.35),rgba(5,12,20,.5)),url(nen.jpg) center/cover no-repeat}
-html:root,html:root[data-theme]{--bg:#07151f;--panel:rgba(13,37,51,.6);--tx:#e6f4f7;--mu:#a9c6d0;--ac:#4fc3d6;--coral:#ff8a6b;--bd:rgba(255,255,255,.2);--sp:#bfeaf2}
-.hero{background:none}
-.hero svg{display:none}
-h2,.bk h3,.bk p{text-shadow:0 1px 6px #000}
-.read{background:rgba(7,21,31,.82);box-shadow:0 0 0 14px rgba(7,21,31,.82);border-radius:4px}
+@media(prefers-reduced-motion:no-preference){body::before{animation:tw 3.5s ease-in-out infinite}body::after{animation:tw 5s ease-in-out 1.5s infinite}.hero svg path{animation:w 9s ease-in-out infinite alternate}}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes w{to{transform:translateX(-30px)}}
 </style>
 </head>
 <body>
-<div class="hero"><div class="seal" aria-hidden="true">忘魚小店</div><h1 id="logo">Vong Ngư Tiểu Điếm</h1><p>Tiệm nhỏ của chú cá quên</p>
-<div class="tabs"><button data-sec="dang-ra">Mộng ảnh</button><button data-sec="hoan">Song ảnh</button><button data-sec="gioi-thieu">Nguyệt ảnh</button><button data-sec="gioi-thieu">Mật ảnh</button></div>
-<svg viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true"><path d="M-60 24 Q0 4 60 24 T180 24 T300 24 T420 24 T540 24 T660 24 T780 24 T900 24 T1020 24 T1140 24 T1260 24 V46 H-60Z" fill="var(--bg)"/></svg></div>
+<div class="hero"><div class="tabs"><button data-sec="dang-ra">Mộng Ảnh</button><button data-sec="hoan">Song Ảnh</button><button data-sec="gioi-thieu">Nguyệt Ảnh</button><button data-sec="gioi-thieu">Mật Ảnh</button></div>
+<div class="brand"><div class="seal" aria-hidden="true">忘魚小店</div><h1 id="logo">Vong Ngư Tiểu Điếm</h1><p>Tiệm nhỏ của chú cá quên</p></div>
+<svg viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true"><path d="M-60 24 Q0 4 60 24 T180 24 T300 24 T420 24 T540 24 T660 24 T780 24 T900 24 T1020 24 T1140 24 T1260 24 V46 H-60Z" fill="#071a22"/></svg></div>
 <div class="wrap" id="app"><div class="msg">Đang tải…</div></div>
 <footer id="gioi-thieu">Vong Ngư Tiểu Điếm · nơi đăng truyện của riêng mình<br>Sửa nội dung phần này trong file index.html.</footer>
 <script>
