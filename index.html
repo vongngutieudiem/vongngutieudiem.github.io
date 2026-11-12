@@ -21,7 +21,7 @@ nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:2px;flex
 nav b{font:600 16px var(--ff);margin-right:auto;cursor:pointer;padding:4px 6px}
 nav button{border:0;color:var(--mu);padding:5px 9px;border-radius:4px}
 nav button:hover{color:var(--tx)}
-.hero{position:relative;text-align:center;color:#e8f8fa;padding:54px 16px 74px;background:linear-gradient(#08323f,#0d6a80 85%)}
+.hero{position:relative;text-align:center;color:#e8f8fa;padding:54px 16px 74px;background:radial-gradient(circle at 75% 15%,rgba(255,255,255,.22),transparent 45%),radial-gradient(circle at 15% 60%,rgba(120,230,255,.18),transparent 40%),linear-gradient(#08323f,#0d6a80 85%)}
 .seal{display:inline-block;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;margin-bottom:12px}
 .hero h1{font:500 clamp(54px,14vw,96px)/1.3 'WindSong','Noto Serif',cursive;margin:0;cursor:pointer}
 .tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 24px;margin-top:22px}
@@ -57,6 +57,21 @@ footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);
 #vien{padding-bottom:30px}
 @media(prefers-reduced-motion:no-preference){.hero svg path{animation:w 9s ease-in-out infinite alternate}}
 @keyframes w{to{transform:translateX(-30px)}}
+:root{--star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z' fill='%23fff'/%3E%3C/svg%3E")}
+.hero>*{position:relative}
+.hero::before,.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-repeat:no-repeat}
+.hero::before{background-image:var(--star),var(--star),var(--star),var(--star),var(--star);background-position:8% 22%,24% 70%,52% 12%,78% 60%,92% 25%;background-size:16px,10px,12px,18px,9px}
+.hero::after{background-image:var(--star),var(--star),var(--star),var(--star);background-position:15% 45%,38% 30%,66% 38%,86% 78%;background-size:9px,15px,11px,13px}
+@media(prefers-reduced-motion:no-preference){.hero::before{animation:tw 3s ease-in-out infinite}.hero::after{animation:tw 4s ease-in-out 1.2s infinite}}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+:root{--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E");--sp:#e0a21b}
+@media(prefers-color-scheme:dark){:root{--sp:#bfeaf2}}
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--sp);opacity:.6}
+body::before{mask:var(--m) 5% 12%/10px 10px no-repeat,var(--m) 20% 40%/14px 14px no-repeat,var(--m) 35% 80%/9px 9px no-repeat,var(--m) 48% 25%/16px 16px no-repeat,var(--m) 62% 65%/11px 11px no-repeat,var(--m) 75% 15%/13px 13px no-repeat,var(--m) 88% 50%/9px 9px no-repeat,var(--m) 95% 85%/15px 15px no-repeat}
+body::after{mask:var(--m) 12% 70%/12px 12px no-repeat,var(--m) 28% 8%/9px 9px no-repeat,var(--m) 42% 52%/15px 15px no-repeat,var(--m) 55% 92%/10px 10px no-repeat,var(--m) 68% 35%/13px 13px no-repeat,var(--m) 82% 72%/9px 9px no-repeat,var(--m) 92% 10%/14px 14px no-repeat,var(--m) 3% 90%/11px 11px no-repeat}
+@media(prefers-reduced-motion:no-preference){body::before{animation:tw2 3.5s ease-in-out infinite}body::after{animation:tw2 5s ease-in-out 1.5s infinite}}
+@keyframes tw2{0%,100%{opacity:.2}50%{opacity:.85}}
+.read{background:var(--bg);box-shadow:0 0 0 12px var(--bg)}
 </style>
 </head>
 <body>
