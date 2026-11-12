@@ -8,76 +8,94 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef2ee;--panel:#e2e9e4;--tx:#1d2b2e;--mu:#5d7073;--ac:#2f6f73;--gold:#c98a12;--bd:#c5d1cb;--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1d22;--panel:#16282e;--tx:#dbe7e4;--mu:#8ea6a6;--ac:#7fc4bf;--gold:#e8b84a;--bd:#25393f}}
-:root[data-theme="dark"]{--bg:#0f1d22;--panel:#16282e;--tx:#dbe7e4;--mu:#8ea6a6;--ac:#7fc4bf;--gold:#e8b84a;--bd:#25393f}
+:root{--bg:#e9f4f6;--panel:#d5eaee;--tx:#0b2a38;--mu:#4f7482;--ac:#0e7c8f;--coral:#d9573a;--bd:#bcd9df;--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07151f;--panel:#0d2533;--tx:#d3ecf0;--mu:#7fa3b0;--ac:#4fc3d6;--coral:#ff8a6b;--bd:#18364a}}
+:root[data-theme="dark"]{--bg:#07151f;--panel:#0d2533;--tx:#d3ecf0;--mu:#7fa3b0;--ac:#4fc3d6;--coral:#ff8a6b;--bd:#18364a}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 var(--ui)}
 body.sans{--ff:var(--ui)}
-a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:1px solid var(--bd);border-radius:6px;padding:6px 12px}
 button:hover{border-color:var(--ac)}
-:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.top{display:flex;justify-content:flex-end;gap:4px;max-width:720px;margin:0 auto;padding:10px 16px 0}
-.top button{border:0;color:var(--mu);padding:4px 8px}
-.sign{max-width:720px;margin:6px auto 0;padding:28px 16px 20px;text-align:center;cursor:pointer}
-.seal{display:inline-block;border:2px solid var(--gold);color:var(--gold);font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;margin-bottom:12px}
-.sign h1{font:600 clamp(28px,7vw,44px)/1.15 var(--ff);margin:0;letter-spacing:.02em}
-.sign p{margin:6px 0 0;color:var(--mu);font-size:14px}
-.wave{display:block;width:100%;max-width:720px;margin:0 auto;height:18px;color:var(--ac);opacity:.7}
-main{max-width:720px;margin:0 auto;padding:12px 16px 80px}
-h2{font:600 24px/1.3 var(--ff);margin:.8em 0 .3em}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--bd);border-radius:0;padding:14px 2px}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:2px;flex-wrap:wrap;padding:6px 12px;background:var(--bg);border-bottom:1px solid var(--bd)}
+nav b{font:600 16px var(--ff);margin-right:auto;cursor:pointer;padding:4px 6px}
+nav button{border:0;color:var(--mu);padding:5px 9px;border-radius:4px}
+nav button:hover{color:var(--tx)}
+.hero{position:relative;text-align:center;color:#e8f8fa;padding:54px 16px 74px;background:linear-gradient(#08323f,#0d6a80 85%)}
+.seal{display:inline-block;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;margin-bottom:12px}
+.hero h1{font:600 clamp(30px,8vw,52px)/1.15 var(--ff);margin:0}
+.hero p{margin:8px 0 0;opacity:.8}
+.hero svg{position:absolute;left:0;bottom:-1px;width:100%;height:46px;display:block}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+section{padding:22px 0 6px}
+h2{font:600 24px/1.3 var(--ff);margin:0 0 14px;display:flex;align-items:baseline;gap:10px}
+h2 small{font:400 14px var(--ui);color:var(--mu)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 14px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:860px){.grid{grid-template-columns:repeat(4,1fr)}}
+.bk{text-align:center;cursor:pointer}
+.cv{aspect-ratio:3/4;border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;padding:12px;color:#eafcff;font:600 20px/1.3 var(--ff)}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bk h3{font:600 17px/1.35 var(--ff);margin:10px 0 2px}
+.bk p{margin:0 0 8px;color:var(--mu);font-size:14px}
+.go{background:var(--ac);color:var(--bg);border-color:var(--ac);padding:6px 16px;font-size:14px}
+.row{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--bd);border-radius:0;padding:14px 2px}
 .row:hover{background:var(--panel)}
-.row span:first-child{font:400 18px/1.4 var(--ff)}
+.row span{font:400 18px/1.4 var(--ff)}
 .mu{color:var(--mu);font-size:14px}
-.cta{background:var(--ac);color:var(--bg);border-color:var(--ac);padding:9px 16px;margin:8px 0}
+.head{display:flex;gap:16px;align-items:flex-start;margin:16px 0}
+.head .cv{width:130px;flex:none;font-size:15px}
 .read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0}
 .read p{margin:0 0 1.1em}
-.nav{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
-.nav button:disabled{opacity:.35;cursor:default}
+.nv{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
+.nv button:disabled{opacity:.35;cursor:default}
 .msg{padding:40px 0;color:var(--mu);text-align:center}
-@media(prefers-reduced-motion:no-preference){.fish{animation:sw 7s ease-in-out infinite alternate}}
-@keyframes sw{to{transform:translateX(40px)}}
+footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);font-size:14px;border-top:1px solid var(--bd)}
+#vien{padding-bottom:30px}
+@media(prefers-reduced-motion:no-preference){.hero svg path{animation:w 9s ease-in-out infinite alternate}}
+@keyframes w{to{transform:translateX(-30px)}}
 </style>
 </head>
 <body>
-<div class="top"><button id="fm" aria-label="Giảm cỡ chữ">A−</button><button id="fp" aria-label="Tăng cỡ chữ">A+</button><button id="ft" aria-label="Đổi phông chữ">Aa</button><button id="th" aria-label="Đổi sáng tối">Sáng/Tối</button></div>
-<div class="sign" id="logo"><div class="seal" aria-hidden="true">忘魚小店</div><h1>Vong Ngư Tiểu Điếm</h1><p>Tiệm nhỏ của chú cá quên</p></div>
-<svg class="wave" viewBox="0 0 720 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 Q30 0 60 9 T120 9 T180 9 T240 9 T300 9 T360 9 T420 9 T480 9 T540 9 T600 9 T660 9 T720 9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<main id="app"><div class="msg">Đang tải…</div></main>
+<nav><b id="logo">🐟 Vong Ngư Tiểu Điếm</b><button data-sec="dang-ra">Đang ra</button><button data-sec="hoan">Hoàn thành</button><button data-sec="gioi-thieu">Giới thiệu</button><button id="fm" aria-label="Giảm cỡ chữ">A−</button><button id="fp" aria-label="Tăng cỡ chữ">A+</button><button id="ft" aria-label="Đổi phông">Aa</button><button id="th" aria-label="Đổi sáng tối">Sáng/Tối</button></nav>
+<div class="hero"><div class="seal" aria-hidden="true">忘魚小店</div><h1>Vong Ngư Tiểu Điếm</h1><p>Tiệm nhỏ của chú cá quên</p>
+<svg viewBox="0 0 1200 46" preserveAspectRatio="none" aria-hidden="true"><path d="M-60 24 Q0 4 60 24 T180 24 T300 24 T420 24 T540 24 T660 24 T780 24 T900 24 T1020 24 T1140 24 T1260 24 V46 H-60Z" fill="var(--bg)"/></svg></div>
+<div class="wrap" id="app"><div class="msg">Đang tải…</div></div>
+<footer id="gioi-thieu">Vong Ngư Tiểu Điếm · nơi đăng truyện của riêng mình<br>Sửa nội dung phần này trong file index.html.</footer>
 <script>
-// Cấu hình: thường không cần sửa. Nếu dùng tên miền riêng, điền owner và repo vào đây.
+// Thường không cần sửa. Nếu dùng tên miền riêng, điền owner và repo vào đây.
 const CFG={owner:'',repo:'',dir:'truyen'};
 const $=s=>document.querySelector(s),app=$('#app'),root=document.documentElement;
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-let fs=+LS.get('fs',19),serif=LS.get('serif','1')==='1',theme=LS.get('theme','');
+let fs=+LS.get('fs',19),serif=LS.get('serif','1')==='1',theme=LS.get('theme',''),sec='';
 function prefs(){root.style.setProperty('--fs',fs+'px');document.body.classList.toggle('sans',!serif);if(theme)root.setAttribute('data-theme',theme)}
 prefs();
 $('#fm').onclick=()=>{fs=Math.max(14,fs-1);LS.set('fs',fs);prefs()};
 $('#fp').onclick=()=>{fs=Math.min(30,fs+1);LS.set('fs',fs);prefs()};
 $('#ft').onclick=()=>{serif=!serif;LS.set('serif',serif?'1':'0');prefs()};
-$('#th').onclick=()=>{const cur=root.getAttribute('data-theme');const dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches;theme=dark?'light':'dark';LS.set('theme',theme);prefs()};
-$('#logo').onclick=()=>{location.hash=''};
-
-function repoInfo(){let{owner,repo}=CFG;if(owner&&repo)return{owner,repo};const h=location.hostname;if(h.endsWith('.github.io')){owner=h.split('.')[0];const seg=location.pathname.split('/')[1];repo=seg&&!/\.html?$/.test(seg)?seg:h}return{owner,repo}}
+$('#th').onclick=()=>{const c=root.getAttribute('data-theme');const d=c?c==='dark':matchMedia('(prefers-color-scheme: dark)').matches;theme=d?'light':'dark';LS.set('theme',theme);prefs()};
+$('#logo').onclick=()=>{sec='';location.hash===''||location.hash==='#'?route():location.hash=''};
+function repoInfo(){let{owner,repo}=CFG;if(owner&&repo)return{owner,repo};const h=location.hostname;if(h.endsWith('.github.io')){owner=h.split('.')[0];const g=location.pathname.split('/')[1];repo=g&&!/\.html?$/.test(g)?g:h}return{owner,repo}}
 async function list(path){
   const k='ls:'+path;try{const c=JSON.parse(sessionStorage.getItem(k)||'null');if(c&&Date.now()-c.t<300000)return c.d}catch(e){}
   const{owner,repo}=repoInfo();if(!owner)throw new Error('local');
   const r=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path.split('/').map(encodeURIComponent).join('/')}`);
-  if(r.status===404)return [];
-  if(!r.ok)throw new Error('api');
+  if(r.status===404)return [];if(!r.ok)throw new Error('api');
   const d=(await r.json()).map(x=>({name:x.name,type:x.type}));
   try{sessionStorage.setItem(k,JSON.stringify({t:Date.now(),d}))}catch(e){}
   return d;
 }
-function parse(name){const base=name.replace(/\.txt$/i,'');const m=base.match(/^(\d+)\s*[-–.]\s*(.*)$/);return m?{file:name,n:+m[1],title:m[2]||'Chương '+m[1]}:{file:name,n:1e9,title:base}}
-async function chapters(story){return (await list(CFG.dir+'/'+story)).filter(x=>x.type==='file'&&/\.txt$/i.test(x.name)).map(x=>parse(x.name)).sort((a,b)=>a.n-b.n||a.file.localeCompare(b.file,'vi'))}
 const enc=encodeURIComponent;
+function parse(name){const b=name.replace(/\.txt$/i,'');const m=b.match(/^(\d+)\s*[-–.]\s*(.*)$/);return m?{file:name,n:+m[1],title:m[2]||'Chương '+m[1]}:{file:name,n:1e9,title:b}}
+async function chapters(s){return (await list(CFG.dir+'/'+s)).filter(x=>x.type==='file'&&/\.txt$/i.test(x.name)).map(x=>parse(x.name)).sort((a,b)=>a.n-b.n||a.file.localeCompare(b.file,'vi'))}
+async function info(s){try{const r=await fetch(`${CFG.dir}/${enc(s)}/thong-tin.json`);if(r.ok)return await r.json()}catch(e){}return {}}
+function cover(s,i){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%45;h+=170;
+  const img=`${CFG.dir}/${enc(s)}/${enc(i.anhBia||'bia.jpg')}`;
+  return `<div class="cv" style="background:linear-gradient(160deg,hsl(${h} 60% 22%),hsl(${h+25} 65% 42%))"><span>${esc(s)}</span><img src="${img}" alt="" loading="lazy" onerror="this.remove()"></div>`}
 let tok=0;
 async function route(){
-  const t=++tok;const p=location.hash.slice(1).split('/').map(decodeURIComponent);scrollTo(0,0);
+  const t=++tok;const p=location.hash.slice(1).split('/').map(decodeURIComponent);
   try{
     if(p[0]==='s'&&p[1])await storyPage(p[1],t);
     else if(p[0]==='c'&&p[1]&&p[2])await chapterPage(p[1],p[2],t);
@@ -85,26 +103,39 @@ async function route(){
   }catch(e){if(t!==tok)return;app.innerHTML='<div class="msg">'+(e.message==='local'?'Trang cần chạy trên GitHub Pages để đọc danh sách truyện.':'Không tải được dữ liệu. Thử tải lại sau ít phút.')+'</div>'}
 }
 async function home(t){
-  const ds=(await list(CFG.dir)).filter(x=>x.type==='dir');if(t!==tok)return;
-  const last=LS.get('last','');let lh='';
-  if(last){try{const l=JSON.parse(last);lh=`<button class="cta" data-h="#c/${enc(l.s)}/${enc(l.f)}">Đọc tiếp: ${esc(l.s)}</button>`}catch(e){}}
-  app.innerHTML='<h2>Truyện</h2>'+lh+(ds.length?ds.map(d=>`<button class="row" data-h="#s/${enc(d.name)}"><span>${esc(d.name)}</span></button>`).join(''):'<div class="msg">Tiệm chưa có truyện nào.</div>');
+  document.title='Vong Ngư Tiểu Điếm';
+  const ds=(await list(CFG.dir)).filter(x=>x.type==='dir');
+  const infos=await Promise.all(ds.map(d=>info(d.name)));if(t!==tok)return;
+  const bk=(d,i)=>`<div class="bk" data-h="#s/${enc(d.name)}">${cover(d.name,i)}<h3>${esc(d.name)}</h3><p>${i.tacGia?'Tác giả: '+esc(i.tacGia):'&nbsp;'}</p><button class="go">Đọc truyện</button></div>`;
+  const all=ds.map((d,k)=>({d,i:infos[k]}));
+  const on=all.filter(x=>x.i.trangThai!=='hoan'),done=all.filter(x=>x.i.trangThai==='hoan');
+  const block=(id,name,l)=>l.length?`<section id="${id}"><h2>${name}<small>${l.length} truyện</small></h2><div class="grid">${l.map(x=>bk(x.d,x.i)).join('')}</div></section>`:'';
+  let lh='';try{const l=JSON.parse(LS.get('last','null'));if(l)lh=`<section><button class="go" data-h="#c/${enc(l.s)}/${enc(l.f)}">Đọc tiếp: ${esc(l.s)}</button></section>`}catch(e){}
+  app.innerHTML=lh+(all.length?block('dang-ra','Đang ra',on)+block('hoan','Hoàn thành',done):'<div class="msg">Tiệm chưa có truyện nào.</div>');
+  if(sec){const e=document.getElementById(sec);sec='';if(e)e.scrollIntoView({behavior:'smooth'})}
 }
 async function storyPage(s,t){
-  const cs=await chapters(s);if(t!==tok)return;
-  app.innerHTML=`<p><button data-h="#">Tất cả truyện</button></p><h2>${esc(s)}</h2>`+(cs.length?cs.map(c=>`<button class="row" data-h="#c/${enc(s)}/${enc(c.file)}"><span>${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</span></button>`).join(''):'<div class="msg">Truyện này chưa có chương nào.</div>');
+  const [cs,i]=await Promise.all([chapters(s),info(s)]);if(t!==tok)return;
+  document.title=s+' · Vong Ngư Tiểu Điếm';scrollTo(0,0);
+  app.innerHTML=`<p><button data-h="#">Tất cả truyện</button></p><div class="head"><div style="width:130px;flex:none">${cover(s,i)}</div><div><h2 style="display:block">${esc(s)}</h2><p class="mu">${i.tacGia?'Tác giả: '+esc(i.tacGia)+'<br>':''}${i.trangThai==='hoan'?'Hoàn thành':'Đang ra'}</p>${i.moTa?'<p>'+esc(i.moTa)+'</p>':''}${cs.length?`<button class="go" data-h="#c/${enc(s)}/${enc(cs[0].file)}">Đọc từ đầu</button>`:''}</div></div><h2>Mục lục</h2>`+(cs.length?cs.map(c=>`<button class="row" data-h="#c/${enc(s)}/${enc(c.file)}"><span>${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</span></button>`).join(''):'<div class="msg">Truyện này chưa có chương nào.</div>');
 }
 async function chapterPage(s,f,t){
   const [cs,r]=await Promise.all([chapters(s),fetch(`${CFG.dir}/${enc(s)}/${enc(f)}`)]);if(t!==tok)return;
   if(!r.ok){app.innerHTML='<div class="msg">Không tìm thấy chương này.</div>';return}
   const body=await r.text();if(t!==tok)return;
   const i=cs.findIndex(c=>c.file===f),c=cs[i]||parse(f),pv=cs[i-1],nx=cs[i+1];
-  LS.set('last',JSON.stringify({s,f}));
-  const nav=`<div class="nav"><button ${pv?`data-h="#c/${enc(s)}/${enc(pv.file)}"`:'disabled'}>Chương trước</button><button data-h="#s/${enc(s)}">Mục lục</button><button ${nx?`data-h="#c/${enc(s)}/${enc(nx.file)}"`:'disabled'}>Chương sau</button></div>`;
-  app.innerHTML=`<span class="mu">${esc(s)}</span><h2>${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</h2>${nav}<div class="read">${body.trim().split(/\n+/).map(x=>'<p>'+esc(x)+'</p>').join('')}</div>${nav}`;
+  LS.set('last',JSON.stringify({s,f}));scrollTo(0,0);
+  const nav=`<div class="nv"><button ${pv?`data-h="#c/${enc(s)}/${enc(pv.file)}"`:'disabled'}>Chương trước</button><button data-h="#s/${enc(s)}">Mục lục</button><button ${nx?`data-h="#c/${enc(s)}/${enc(nx.file)}"`:'disabled'}>Chương sau</button></div>`;
+  app.innerHTML=`<p class="mu">${esc(s)}</p><h2 style="display:block">${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</h2>${nav}<div class="read">${body.trim().split(/\n+/).map(x=>'<p>'+esc(x)+'</p>').join('')}</div>${nav}`;
   document.title=c.title+' · Vong Ngư Tiểu Điếm';
 }
-document.addEventListener('click',e=>{const b=e.target.closest('[data-h]');if(b&&!b.disabled)location.hash=b.dataset.h});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-h]');if(b&&!b.disabled){location.hash=b.dataset.h;return}
+  const n=e.target.closest('[data-sec]');if(!n)return;
+  sec=n.dataset.sec;
+  if(sec==='gioi-thieu'){$('#gioi-thieu').scrollIntoView({behavior:'smooth'});sec='';return}
+  const h=location.hash;if(!h||h==='#'){const el=document.getElementById(sec);if(el){el.scrollIntoView({behavior:'smooth'});sec=''}}else location.hash='';
+});
 addEventListener('hashchange',route);route();
 </script>
 </body>
