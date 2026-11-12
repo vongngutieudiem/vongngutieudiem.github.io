@@ -72,6 +72,14 @@ body::after{mask:var(--m) 12% 70%/12px 12px no-repeat,var(--m) 28% 8%/9px 9px no
 @media(prefers-reduced-motion:no-preference){body::before{animation:tw2 3.5s ease-in-out infinite}body::after{animation:tw2 5s ease-in-out 1.5s infinite}}
 @keyframes tw2{0%,100%{opacity:.2}50%{opacity:.85}}
 .read{background:var(--bg);box-shadow:0 0 0 12px var(--bg)}
+html{background:#07151f}
+body{background:transparent}
+html::before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(rgba(5,12,20,.35),rgba(5,12,20,.5)),url(nen.jpg) center/cover no-repeat}
+html:root,html:root[data-theme]{--bg:#07151f;--panel:rgba(13,37,51,.6);--tx:#e6f4f7;--mu:#a9c6d0;--ac:#4fc3d6;--coral:#ff8a6b;--bd:rgba(255,255,255,.2);--sp:#bfeaf2}
+.hero{background:none}
+.hero svg{display:none}
+h2,.bk h3,.bk p{text-shadow:0 1px 6px #000}
+.read{background:rgba(7,21,31,.82);box-shadow:0 0 0 14px rgba(7,21,31,.82);border-radius:4px}
 </style>
 </head>
 <body>
