@@ -8,30 +8,35 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&family=WindSong:wght@500&family=Cormorant+Garamond:wght@600&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b1533;--panel:rgba(50,80,150,.3);--tx:#e8eefc;--mu:#a3b3d6;--ac:#7fd0f2;--coral:#ff9d82;--bd:rgba(140,170,255,.22);--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif;--title:'WindSong','Noto Serif',cursive;--tabf:'Cormorant Garamond','Noto Serif',serif;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E")}
+:root{--bg:#14244f;--panel:rgba(70,100,180,.28);--tx:#e8eefc;--mu:#a9b9dc;--ac:#7fd0f2;--coral:#ff9d82;--bd:rgba(150,180,255,.24);--fs:19px;--ff:'Noto Serif',Georgia,serif;--ui:'Be Vietnam Pro',system-ui,sans-serif;--title:'WindSong','Noto Serif',cursive;--tabf:'Cormorant Garamond','Noto Serif',serif;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/svg%3E")}
 *{box-sizing:border-box}
-body{margin:0;color:var(--tx);font:16px/1.6 var(--ui);background:radial-gradient(900px 520px at 85% 0,rgba(90,140,255,.16),transparent 65%),radial-gradient(700px 520px at 0 45%,rgba(80,190,230,.09),transparent 65%),#0b1533}
+body{margin:0;color:var(--tx);font:16px/1.6 var(--ui);background:radial-gradient(900px 520px at 85% 8%,rgba(110,160,255,.16),transparent 65%),radial-gradient(700px 520px at 0 45%,rgba(90,200,240,.10),transparent 65%),linear-gradient(#101d46,#14244f 35%,#101f45)}
 body.sans{--ff:var(--ui)}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:1px solid var(--bd);border-radius:6px;padding:6px 12px}
 button:hover{border-color:var(--ac)}
 :focus-visible{outline:2px solid var(--coral);outline-offset:2px}
-.hero{position:relative;text-align:center;color:#fff;min-height:400px;padding:0 16px 80px;background:linear-gradient(rgba(5,10,30,.2),rgba(5,10,30,.5)),url(nen.jpg) center/cover no-repeat}
-.seal{position:absolute;left:16px;top:16px;z-index:2;border:2px solid #ffb199;color:#ffb199;font:600 15px/1.15 'Noto Serif',serif;padding:5px 6px;letter-spacing:2px;writing-mode:vertical-rl;background:rgba(5,10,30,.35)}
-.brand{padding-top:30px}
-.hero h1{font:500 clamp(60px,16vw,110px)/1.3 var(--title);margin:0;cursor:pointer;text-shadow:0 2px 14px rgba(0,0,0,.7)}
-.hero p{margin:0;opacity:.9;text-shadow:0 1px 8px #000}
-.tabs{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;flex-wrap:wrap;gap:2px 30px;padding:44px 8px 14px;background:linear-gradient(transparent,#0b1533 85%)}
-.tabs button{border:0;border-radius:0;border-bottom:1px solid transparent;color:#e3ecff;padding:2px 2px;font:600 20px/1.4 var(--tabf);letter-spacing:.08em;text-shadow:0 1px 6px #000}
-.tabs button:hover{color:#fff;border-bottom-color:#ffb199}
+.hero{position:relative;overflow:hidden;text-align:center;color:#fff;min-height:390px;padding:0 16px 120px}
+.hero>*{position:relative;z-index:1}
+.hero::before{content:"";position:absolute;inset:-8px;z-index:0;background:linear-gradient(rgba(4,8,26,.5),rgba(4,8,26,.62)),url(nen.jpg) center/cover no-repeat;filter:blur(1.5px);-webkit-mask-image:linear-gradient(#000 50%,transparent);mask-image:linear-gradient(#000 50%,transparent)}
+.brand{padding-top:40px}
+.hero h1{font:500 clamp(60px,16vw,110px)/1.3 var(--title);margin:0;cursor:pointer;text-align:center;transform:translateX(-1vw);text-shadow:0 2px 16px rgba(0,0,0,.85)}
+.seal{display:inline-block;margin-top:4px;border:1px solid #ffb199;color:#ffb199;font:600 15px/1.3 'Noto Serif',serif;letter-spacing:.4em;padding:4px 10px 4px 14px;background:rgba(4,8,26,.4)}
+.tabs{position:sticky;top:0;z-index:10;display:flex;justify-content:center;margin:-74px 12px 22px;pointer-events:none}
+.pill{pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;border:1px solid rgba(210,225,255,.45);border-radius:999px;background:rgba(10,20,58,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:5px;box-shadow:0 4px 22px rgba(0,0,0,.35)}
+.pill button{border:0;border-radius:999px;color:#e3ecff;padding:5px 20px;font:600 19px/1.4 var(--tabf);letter-spacing:.08em}
+.pill button+button{position:relative}
+.pill button+button::before{content:"✦";position:absolute;left:-6px;top:50%;transform:translateY(-50%);font-size:9px;color:#ffb199;opacity:.8}
+.pill button:hover{background:rgba(255,255,255,.14);color:#fff}
 .wrap{max-width:980px;margin:0 auto;padding:0 16px}
-section{padding:22px 0 6px}
+section{padding:22px 0 6px;scroll-margin-top:76px}
 h2{font:600 24px/1.3 var(--ff);margin:0 0 14px;display:flex;align-items:baseline;gap:10px}
 h2 small{font:400 14px var(--ui);color:var(--mu)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 14px}
 @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:860px){.grid{grid-template-columns:repeat(4,1fr)}}
 .bk{text-align:center;cursor:pointer}
-.cv{aspect-ratio:3/4;border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;padding:12px;color:#eafcff;font:600 20px/1.3 var(--ff);box-shadow:0 4px 18px rgba(0,0,0,.35)}
+.cv{aspect-ratio:3/4;border-radius:10px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;padding:12px;color:#eafcff;font:600 20px/1.3 var(--ff);box-shadow:0 4px 18px rgba(0,0,0,.35);transition:transform .25s,box-shadow .25s}
+.bk:hover .cv{transform:translateY(-4px);box-shadow:0 0 24px rgba(127,208,242,.5)}
 .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bk h3{font:600 17px/1.35 var(--ff);margin:10px 0 2px}
 .bk p{margin:0 0 8px;color:var(--mu);font-size:14px}
@@ -42,23 +47,23 @@ h2 small{font:400 14px var(--ui);color:var(--mu)}
 .mu{color:var(--mu);font-size:14px}
 .head{display:flex;gap:16px;align-items:flex-start;margin:16px 0}
 .head .cv{font-size:15px}
-.read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0;background:#0b1533;box-shadow:0 0 0 14px #0b1533;border-radius:4px}
+.read{font:400 var(--fs)/1.9 var(--ff);max-width:62ch;margin:18px 0;background:var(--bg);box-shadow:0 0 0 14px var(--bg);border-radius:4px}
 .read p{margin:0 0 1.1em}
 .nv{display:flex;justify-content:space-between;gap:8px;margin:14px 0}
 .nv button:disabled{opacity:.35;cursor:default}
 .msg{padding:40px 0;color:var(--mu);text-align:center}
 footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);font-size:14px;border-top:1px solid var(--bd)}
-body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:#cfe0ff;opacity:.5}
-body::before{mask:var(--m) 5% 12%/10px 10px no-repeat,var(--m) 20% 40%/14px 14px no-repeat,var(--m) 35% 80%/9px 9px no-repeat,var(--m) 48% 25%/16px 16px no-repeat,var(--m) 62% 65%/11px 11px no-repeat,var(--m) 75% 15%/13px 13px no-repeat,var(--m) 88% 50%/9px 9px no-repeat,var(--m) 95% 85%/15px 15px no-repeat}
-body::after{mask:var(--m) 12% 70%/12px 12px no-repeat,var(--m) 28% 8%/9px 9px no-repeat,var(--m) 42% 52%/15px 15px no-repeat,var(--m) 55% 92%/10px 10px no-repeat,var(--m) 68% 35%/13px 13px no-repeat,var(--m) 82% 72%/9px 9px no-repeat,var(--m) 92% 10%/14px 14px no-repeat,var(--m) 3% 90%/11px 11px no-repeat}
-@media(prefers-reduced-motion:no-preference){body::before{animation:tw 3.5s ease-in-out infinite}body::after{animation:tw 5s ease-in-out 1.5s infinite}}
-@keyframes tw{0%,100%{opacity:.2}50%{opacity:.85}}
+.sky{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.sky i{position:absolute;opacity:.25;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.sky b{position:absolute;bottom:-30px;border:1px solid rgba(200,230,255,.55);border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.35),transparent 60%)}
+@media(prefers-reduced-motion:no-preference){.sky i{animation:tw var(--d) ease-in-out var(--dl) infinite}.sky b{animation:rise var(--d) linear var(--dl) infinite}}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+@keyframes rise{from{transform:translateY(0) translateX(0)}to{transform:translateY(-110vh) translateX(24px)}}
 </style>
 </head>
 <body>
-<div class="hero"><div class="seal" aria-hidden="true">忘魚小店</div>
-<div class="brand"><h1 id="logo">Vong Ngư Tiểu Điếm</h1><p>Tiệm nhỏ của chú cá quên</p></div>
-<div class="tabs"><button data-sec="dang-ra">Mộng Ảnh</button><button data-sec="hoan">Song Ảnh</button><button data-sec="gioi-thieu">Nguyệt Ảnh</button><button data-sec="gioi-thieu">Mật Ảnh</button></div></div>
+<div class="hero"><div class="brand"><h1 id="logo">Vong Ngư Tiểu Điếm</h1><div class="seal" aria-hidden="true">忘魚小店</div></div></div>
+<div class="tabs"><div class="pill"><button data-sec="dang-ra">Mộng Ảnh</button><button data-sec="hoan">Song Ảnh</button><button data-sec="gioi-thieu">Nguyệt Ảnh</button><button data-sec="gioi-thieu">Mật Ảnh</button></div></div>
 <div class="wrap" id="app"><div class="msg">Đang tải…</div></div>
 <footer id="gioi-thieu">Vong Ngư Tiểu Điếm · nơi đăng truyện của riêng mình<br>Sửa nội dung phần này trong file index.html.</footer>
 <script>
@@ -131,6 +136,10 @@ document.addEventListener('click',e=>{
   if(sec==='gioi-thieu'){$('#gioi-thieu').scrollIntoView({behavior:'smooth'});sec='';return}
   const h=location.hash;if(!h||h==='#'){const el=document.getElementById(sec);if(el){el.scrollIntoView({behavior:'smooth'});sec=''}}else location.hash='';
 });
+(function(){const w=document.createElement('div');w.className='sky';const cols=['#cfe0ff','#cfe0ff','#bfeaff','#ffe6a8','#ffc9d9'];
+for(let i=0;i<44;i++){const e=document.createElement('i'),z=6+Math.random()*13;e.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${z}px;height:${z}px;background:${cols[i%cols.length]};--d:${2.5+Math.random()*4}s;--dl:${-Math.random()*6}s`;w.appendChild(e)}
+for(let i=0;i<9;i++){const e=document.createElement('b'),z=8+Math.random()*22;e.style.cssText=`left:${Math.random()*100}%;width:${z}px;height:${z}px;--d:${16+Math.random()*18}s;--dl:${-Math.random()*30}s`;w.appendChild(e)}
+document.body.prepend(w)})();
 addEventListener('hashchange',route);route();
 </script>
 </body>
