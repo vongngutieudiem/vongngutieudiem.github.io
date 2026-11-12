@@ -64,7 +64,7 @@ footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);
 </head>
 <body>
 <div class="hero"><div class="brand"><div class="ttl"><h1 id="logo">Vong Ngư Tiểu Điếm</h1><div class="seal" aria-hidden="true">忘魚小店</div></div></div></div>
-<div class="tabs"><div class="pill"><button data-sec="dang-ra">Mộng Ảnh</button><button data-sec="hoan">Song Ảnh</button><button data-sec="gioi-thieu">Nguyệt Ảnh</button><button data-sec="gioi-thieu">Mật Ảnh</button></div></div>
+<div class="tabs"><div class="pill"><button data-sec="gioi-thieu">Mộng Ảnh</button><button data-sec="dam-my">Song Ảnh</button><button data-sec="ngon-tinh">Nguyệt Ảnh</button><button data-sec="goc-tham-kin">Mật Ảnh</button></div></div>
 <div class="wrap" id="app"><div class="msg">Đang tải…</div></div>
 <footer id="gioi-thieu">Vong Ngư Tiểu Điếm · nơi đăng truyện của riêng mình<br>Sửa nội dung phần này trong file index.html.</footer>
 <script>
@@ -112,7 +112,7 @@ async function home(t){
   const on=all.filter(x=>x.i.trangThai!=='hoan'),done=all.filter(x=>x.i.trangThai==='hoan');
   const block=(id,name,l)=>l.length?`<section id="${id}"><h2>${name}<small>${l.length} truyện</small></h2><div class="grid">${l.map(x=>bk(x.d,x.i)).join('')}</div></section>`:'';
   let lh='';try{const l=JSON.parse(LS.get('last','null'));if(l)lh=`<section><button class="go" data-h="#c/${enc(l.s)}/${enc(l.f)}">Đọc tiếp: ${esc(l.s)}</button></section>`}catch(e){}
-  app.innerHTML=lh+(all.length?block('dang-ra','Đang ra',on)+block('hoan','Hoàn thành',done):'<div class="msg">Tiệm chưa có truyện nào.</div>');
+  app.innerHTML=lh+(all.length?block('dam-my','Song Ảnh',on)+('ngon-tinh','Nguyệt Ảnh',on):'<div class="msg">Tiệm chưa có truyện nào.</div>');
   if(sec){const e=document.getElementById(sec);sec='';if(e)e.scrollIntoView({behavior:'smooth'})}
 }
 async function storyPage(s,t){
