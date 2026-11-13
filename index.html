@@ -69,7 +69,11 @@ footer{margin-top:50px;padding:24px 16px 40px;text-align:center;color:var(--mu);
 <footer id="gioi-thieu">Vong Ngư Tiểu Điếm · nơi đăng truyện của riêng mình<br>Sửa nội dung phần này trong file index.html.</footer>
 <script>
 // Thường không cần sửa. Nếu dùng tên miền riêng, điền owner và repo vào đây.
-const CFG={owner:'',repo:'',dir:'truyen'};
+const CFG={owner:'',repo:'',genres:[
+  {id:'dam-my',tab:'Song Ảnh',dir:'Đam mỹ'},
+  {id:'ngon-tinh',tab:'Nguyệt Ảnh',dir:'Ngôn tình'},
+  {id:'goc-tham-kin',tab:'Mật Ảnh',dir:'Góc thầm kín'}
+]};
 const $=s=>document.querySelector(s),app=$('#app'),root=document.documentElement;
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
@@ -88,45 +92,48 @@ async function list(path){
   return d;
 }
 const enc=encodeURIComponent;
+const G=id=>CFG.genres.find(x=>x.id===id)||CFG.genres[0];
+const base=(g,s)=>enc(G(g).dir)+'/'+enc(s);
 function parse(name){const b=name.replace(/\.txt$/i,'');const m=b.match(/^(\d+)\s*[-–.]\s*(.*)$/);return m?{file:name,n:+m[1],title:m[2]||'Chương '+m[1]}:{file:name,n:1e9,title:b}}
-async function chapters(s){return (await list(CFG.dir+'/'+s)).filter(x=>x.type==='file'&&/\.txt$/i.test(x.name)).map(x=>parse(x.name)).sort((a,b)=>a.n-b.n||a.file.localeCompare(b.file,'vi'))}
-async function info(s){try{const r=await fetch(`${CFG.dir}/${enc(s)}/thong-tin.json`);if(r.ok)return await r.json()}catch(e){}return {}}
-function cover(s,i){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%45;h+=170;
-  const img=`${CFG.dir}/${enc(s)}/${enc(i.anhBia||'bia.jpg')}`;
+async function chapters(g,s){return (await list(G(g).dir+'/'+s)).filter(x=>x.type==='file'&&/\.txt$/i.test(x.name)).map(x=>parse(x.name)).sort((a,b)=>a.n-b.n||a.file.localeCompare(b.file,'vi'))}
+async function info(g,s){try{const r=await fetch(`${base(g,s)}/thong-tin.json`);if(r.ok)return await r.json()}catch(e){}return {}}
+function cover(g,s,i){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%45;h+=170;
+  const img=`${base(g,s)}/${enc(i.anhBia||'bia.jpg')}`;
   return `<div class="cv" style="background:linear-gradient(160deg,hsl(${h} 60% 22%),hsl(${h+25} 65% 42%))"><span>${esc(s)}</span><img src="${img}" alt="" loading="lazy" onerror="this.remove()"></div>`}
 let tok=0;
 async function route(){
   const t=++tok;const p=location.hash.slice(1).split('/').map(decodeURIComponent);
   try{
-    if(p[0]==='s'&&p[1])await storyPage(p[1],t);
-    else if(p[0]==='c'&&p[1]&&p[2])await chapterPage(p[1],p[2],t);
+    if(p[0]==='s'&&p[1]&&p[2])await storyPage(p[1],p[2],t);
+    else if(p[0]==='c'&&p[1]&&p[2]&&p[3])await chapterPage(p[1],p[2],p[3],t);
     else await home(t);
   }catch(e){if(t!==tok)return;app.innerHTML='<div class="msg">'+(e.message==='local'?'Trang cần chạy trên GitHub Pages để đọc danh sách truyện.':'Không tải được dữ liệu. Thử tải lại sau ít phút.')+'</div>'}
 }
 async function home(t){
   document.title='Vong Ngư Tiểu Điếm';
-  const ds=(await list(CFG.dir)).filter(x=>x.type==='dir');
-  const infos=await Promise.all(ds.map(d=>info(d.name)));if(t!==tok)return;
-  const bk=(d,i)=>`<div class="bk" data-h="#s/${enc(d.name)}">${cover(d.name,i)}<h3>${esc(d.name)}</h3><p>${i.tacGia?'Tác giả: '+esc(i.tacGia):'&nbsp;'}</p><button class="go">Đọc truyện</button></div>`;
-  const all=ds.map((d,k)=>({d,i:infos[k]}));
-  const on=all.filter(x=>x.i.trangThai!=='hoan'),done=all.filter(x=>x.i.trangThai==='hoan');
-  const block=(id,name,l)=>l.length?`<section id="${id}"><h2>${name}<small>${l.length} truyện</small></h2><div class="grid">${l.map(x=>bk(x.d,x.i)).join('')}</div></section>`:'';
-  let lh='';try{const l=JSON.parse(LS.get('last','null'));if(l)lh=`<section><button class="go" data-h="#c/${enc(l.s)}/${enc(l.f)}">Đọc tiếp: ${esc(l.s)}</button></section>`}catch(e){}
-  app.innerHTML=lh+(all.length?block('dam-my','Song Ảnh',on)+('ngon-tinh','Nguyệt Ảnh',on):'<div class="msg">Tiệm chưa có truyện nào.</div>');
+  const lists=await Promise.all(CFG.genres.map(async g=>{
+    const ds=(await list(g.dir)).filter(x=>x.type==='dir');
+    const infos=await Promise.all(ds.map(d=>info(g.id,d.name)));
+    return ds.map((d,k)=>({g:g.id,name:d.name,i:infos[k]}));
+  }));if(t!==tok)return;
+  const bk=x=>`<div class="bk" data-h="#s/${x.g}/${enc(x.name)}">${cover(x.g,x.name,x.i)}<h3>${esc(x.name)}</h3><p>${x.i.tacGia?'Tác giả: '+esc(x.i.tacGia):'&nbsp;'}</p><button class="go">Đọc truyện</button></div>`;
+  const block=(g,l)=>`<section id="${g.id}"><h2>${esc(g.tab)}<small>${esc(g.dir)} · ${l.length} truyện</small></h2>${l.length?`<div class="grid">${l.map(bk).join('')}</div>`:'<div class="msg">Mục này chưa có truyện nào.</div>'}</section>`;
+  let lh='';try{const l=JSON.parse(LS.get('last','null'));if(l&&l.g)lh=`<section><button class="go" data-h="#c/${l.g}/${enc(l.s)}/${enc(l.f)}">Đọc tiếp: ${esc(l.s)}</button></section>`}catch(e){}
+  app.innerHTML=lh+CFG.genres.map((g,k)=>block(g,lists[k])).join('');
   if(sec){const e=document.getElementById(sec);sec='';if(e)e.scrollIntoView({behavior:'smooth'})}
 }
-async function storyPage(s,t){
-  const [cs,i]=await Promise.all([chapters(s),info(s)]);if(t!==tok)return;
+async function storyPage(g,s,t){
+  const [cs,i]=await Promise.all([chapters(g,s),info(g,s)]);if(t!==tok)return;
   document.title=s+' · Vong Ngư Tiểu Điếm';scrollTo(0,0);
-  app.innerHTML=`<p><button data-h="#">Tất cả truyện</button></p><div class="head"><div style="width:130px;flex:none">${cover(s,i)}</div><div><h2 style="display:block">${esc(s)}</h2><p class="mu">${i.tacGia?'Tác giả: '+esc(i.tacGia)+'<br>':''}${i.trangThai==='hoan'?'Hoàn thành':'Đang ra'}</p>${i.moTa?'<p>'+esc(i.moTa)+'</p>':''}${cs.length?`<button class="go" data-h="#c/${enc(s)}/${enc(cs[0].file)}">Đọc từ đầu</button>`:''}</div></div><h2>Mục lục</h2>`+(cs.length?cs.map(c=>`<button class="row" data-h="#c/${enc(s)}/${enc(c.file)}"><span>${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</span></button>`).join(''):'<div class="msg">Truyện này chưa có chương nào.</div>');
+  app.innerHTML=`<p><button data-h="#">Tất cả truyện</button></p><div class="head"><div style="width:130px;flex:none">${cover(g,s,i)}</div><div><h2 style="display:block">${esc(s)}</h2><p class="mu">${esc(G(g).dir)}<br>${i.tacGia?'Tác giả: '+esc(i.tacGia)+'<br>':''}${i.trangThai==='hoan'?'Hoàn thành':'Đang ra'}</p>${i.moTa?'<p>'+esc(i.moTa)+'</p>':''}${cs.length?`<button class="go" data-h="#c/${g}/${enc(s)}/${enc(cs[0].file)}">Đọc từ đầu</button>`:''}</div></div><h2>Mục lục</h2>`+(cs.length?cs.map(c=>`<button class="row" data-h="#c/${g}/${enc(s)}/${enc(c.file)}"><span>${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</span></button>`).join(''):'<div class="msg">Truyện này chưa có chương nào.</div>');
 }
-async function chapterPage(s,f,t){
-  const [cs,r]=await Promise.all([chapters(s),fetch(`${CFG.dir}/${enc(s)}/${enc(f)}`)]);if(t!==tok)return;
+async function chapterPage(g,s,f,t){
+  const [cs,r]=await Promise.all([chapters(g,s),fetch(`${base(g,s)}/${enc(f)}`)]);if(t!==tok)return;
   if(!r.ok){app.innerHTML='<div class="msg">Không tìm thấy chương này.</div>';return}
   const body=await r.text();if(t!==tok)return;
   const i=cs.findIndex(c=>c.file===f),c=cs[i]||parse(f),pv=cs[i-1],nx=cs[i+1];
-  LS.set('last',JSON.stringify({s,f}));scrollTo(0,0);
-  const nav=`<div class="nv"><button ${pv?`data-h="#c/${enc(s)}/${enc(pv.file)}"`:'disabled'}>Chương trước</button><button data-h="#s/${enc(s)}">Mục lục</button><button ${nx?`data-h="#c/${enc(s)}/${enc(nx.file)}"`:'disabled'}>Chương sau</button></div>`;
+  LS.set('last',JSON.stringify({g,s,f}));scrollTo(0,0);
+  const nav=`<div class="nv"><button ${pv?`data-h="#c/${g}/${enc(s)}/${enc(pv.file)}"`:'disabled'}>Chương trước</button><button data-h="#s/${g}/${enc(s)}">Mục lục</button><button ${nx?`data-h="#c/${g}/${enc(s)}/${enc(nx.file)}"`:'disabled'}>Chương sau</button></div>`;
   app.innerHTML=`<p class="mu">${esc(s)}</p><h2 style="display:block">${c.n<1e9?'Chương '+c.n+': ':''}${esc(c.title)}</h2>${nav}<div class="read">${body.trim().split(/\n+/).map(x=>'<p>'+esc(x)+'</p>').join('')}</div>${nav}`;
   document.title=c.title+' · Vong Ngư Tiểu Điếm';
 }
